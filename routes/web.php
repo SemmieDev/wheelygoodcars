@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware('auth')->group(function () {
-    //
+    Route::get("/placeOffer", [OfferController::class, "show"])->name("placeOffer");
+    Route::post("/placeOffer", [OfferController::class, "submit"])->name("placeOffer.submit");
 });
 
 require __DIR__.'/auth.php';
